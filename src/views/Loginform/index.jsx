@@ -25,7 +25,7 @@ export default class Loginform extends React.Component{
                 if(res.code === 200){
                     // 保存登录
                     setToken(res.id)
-                    this.props.history.push('/admin/userList')
+                    this.props.history.push('/admin/home')
                 }else{
                     this.setState({
                         tip : res.message

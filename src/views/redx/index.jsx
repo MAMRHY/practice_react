@@ -5,7 +5,7 @@ import { useEffect, useState } from 'react';
 
 
 export default function Redx(){
-    const [a,setA] = useState('')
+    const [setA] = useState('')
     useEffect(()=>{
         store.subscribe(()=>{
             console.log(store.getState());

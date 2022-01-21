@@ -27,7 +27,7 @@ export default class UserList extends React.Component{
       getUsersApi(search,page,pageSize)
         .then((res) => {
           console.log('res',res);
-          if(res.code == 200){
+          if(res.code === 200){
             this.setState({
               userList: res.list,
               total: res.total
