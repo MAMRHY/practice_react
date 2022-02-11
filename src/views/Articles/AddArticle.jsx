@@ -62,13 +62,20 @@ function AddArticle(props){
         setSelectTags([...tempArr])
     }
     function publish(){
+        if(!localStorage.getItem('token')){
+            
+            message.error('登录过期，请先登录！即将跳转')
+            setTimeout(()=>{props.history.push('/login')},1500)
+            return;
+        }
         let obj = {
             ...info,
             selectTags,
             selectTagsName,
             title: titleRef.current.getFieldsValue()['title'],
             value,
-            content: marked(value)
+            content: marked(value),
+            user_id: localStorage.getItem('token')
         }
         console.log(obj);
         addArticlesApi(obj).then(res=>{
