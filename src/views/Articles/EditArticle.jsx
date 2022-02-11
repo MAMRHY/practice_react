@@ -10,7 +10,7 @@ const { CheckableTag } = Tag;
 const titleRef = React.createRef()
 
 
-function EditArticle({match}, props){
+function EditArticle({match, ...props}){
     const [id] = useState(match.params.id);  //当前文章id
    
     const [classifies, setClassifies] = useState([])  //获取的全部分类
@@ -105,11 +105,9 @@ function EditArticle({match}, props){
         addArticlesApi(obj).then(res=>{
             if(res.code == 200){
                 message.success('文章修改成功！')
-                // TODO 成功之后的跳转还没有做，取不到props值
-                // setTimeout(()=>{
-                //     // props.history.push("/admin/articles");
-                //     props.history.goBack()
-                // },1500)
+                setTimeout(()=>{
+                    props.history.goBack()
+                },1500)
             }else{
                 message.error('文章修改失败，稍后再试！')
             }
